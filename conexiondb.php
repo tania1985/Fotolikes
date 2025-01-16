@@ -2,7 +2,7 @@
 $host = "localhost"; // o la IP de tu servidor MySQL
 $user = "root";
 $password = "";
-$database = "web2";
+$database = "fotolike";
 try {
     // Crear la conexión con PDO
     $conexion = new PDO("mysql:host=$host;dbname=$database", $user, $password);

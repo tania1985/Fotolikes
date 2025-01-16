@@ -2,15 +2,12 @@
 if(isset($_POST["nombre"])){
     include "conexiondb.php";
     $sql = "INSERT INTO usuarios (nombre, email, password) VALUES (:nombre, :email, :password)";
-    $stmt = $conexion->prepare($sql);
-    $stmt->bindParam(":nombre", $_POST["nombre"]);
-    $stmt->bindParam(":email", $_POST["email"]);
-    $stmt->bindParam(":password", password_hash($_POST["password"], PASSWORD_DEFAULT));
-    if($stmt->execute()){
-        echo "Usuario registrado";
-    }else{
-        echo "Error al registrar usuario";
-    }
+    $stm = $conexion->prepare($sql);
+    $stm->bindParam(":nombre", $_POST["nombre"]);
+    $stm->bindParam(":email", $_POST["email"]);
+    $hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $stm->bindParam(":password", $hashed_password);
+    $stm->execute();
 }
 ?>
 <!DOCTYPE html>
