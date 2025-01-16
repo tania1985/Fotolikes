@@ -1,6 +1,23 @@
 <?php
-if(isset($_POST["titulo"])){
-    
+session_start();
+if (!isset($_SESSION["idusuario"])) {
+    header("Location: login.php");
+}
+if (isset($_POST["titulo"])) {
+    include("conexiondb.php");
+    $nombreFoto = $_FILES["foto"]["name"];
+    $ruta = "./fotos/" . $nombreFoto;
+    if (move_uploaded_file($_FILES["foto"]["tmp_name"], $ruta)) {
+        $sql = "INSERT INTO fotos (titulo,foto,idusuario) VALUES (:titulo,:foto,:idusuario)";
+        $stm = $conexion->prepare($sql);
+        $stm->bindParam(":titulo", $_POST["titulo"]);
+        $stm->bindParam(":foto", $ruta);
+        $stm->bindParam(":idusuario", $_SESSION["idusuario"]);
+        $stm->execute();
+       
+        header("Location: index.php");
+        exit();
+    }
 }
 ?>
 
@@ -10,6 +27,7 @@ if(isset($_POST["titulo"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nueva Foto</title>
+    <link rel="stylesheet" href="CSS/nueva_foto.css">
 </head>
 <body>
     <form action="" method="post" enctype="multipart/form-data">

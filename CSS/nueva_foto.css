@@ -1,0 +1,98 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa; /* Fondo claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+/* Contenedor del formulario */
+form {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Máxima anchura */
+    text-align: center;
+}
+
+/* Estilo de las etiquetas */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"], input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+/* Efecto en el foco de los campos */
+input[type="text"]:focus, input[type="file"]:focus {
+    border-color: #1976d2; /* Bordes azules cuando están enfocados */
+}
+
+/* Estilo del botón de submit */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #1976d2; /* Azul vibrante */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Efecto en el botón al pasar el ratón */
+input[type="submit"]:hover {
+    background-color: #1565c0; /* Azul más oscuro en hover */
+}
+
+/* Mensajes de error o éxito (opcional) */
+div.message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #d32f2f; /* Rojo para mensajes de error */
+    text-align: center;
+}
+
+div.success {
+    color: #388e3c; /* Verde para mensajes de éxito */
+    text-align: center;
+}
+
+/* Medios de pantalla (responsive) */
+
+/* Dispositivos móviles */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    input[type="text"], input[type="file"], input[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

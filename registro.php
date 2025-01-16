@@ -16,6 +16,7 @@ if(isset($_POST["nombre"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fotolikes</title>
+    <link rel="stylesheet" href="CSS/registro.css">
 </head>
 <body> 
     <form action="" method="post">

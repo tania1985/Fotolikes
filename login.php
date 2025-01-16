@@ -11,6 +11,7 @@ if(isset($_POST["email"])){
             session_start();
             $_SESSION["idusuario"] = $usuario["id"];
             $_SESSION["nombre"] = $usuario["nombre"];
+            header("Location: nueva_foto.php");
             echo "Bienvenido";
             exit();
         }else{
@@ -28,7 +29,8 @@ if(isset($_POST["email"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logint</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
     <form action="" method="post">
