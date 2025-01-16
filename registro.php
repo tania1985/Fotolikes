@@ -1,18 +1,16 @@
 <?php
 if(isset($_POST["nombre"])){
-$host = "localhost"; // o la IP de tu servidor MySQL
-$user = "root";
-$password = "";
-$database = "fotolike";
-try {
-    // Crear la conexión con PDO
-    $conexion = new PDO("mysql:host=$host;dbname=$database", $user, $password);
-    // Establecer el modo de error de PDO a excepción
-    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // echo "Conexión exitosa";
-} catch (PDOException $e) {
-    echo "Conexión fallida: " . $e->getMessage();
-}
+    include "conexiondb.php";
+    $sql = "INSERT INTO usuarios (nombre, email, password) VALUES (:nombre, :email, :password)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindParam(":nombre", $_POST["nombre"]);
+    $stmt->bindParam(":email", $_POST["email"]);
+    $stmt->bindParam(":password", password_hash($_POST["password"], PASSWORD_DEFAULT));
+    if($stmt->execute()){
+        echo "Usuario registrado";
+    }else{
+        echo "Error al registrar usuario";
+    }
 }
 ?>
 <!DOCTYPE html>
